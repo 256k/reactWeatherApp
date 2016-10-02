@@ -4,10 +4,11 @@ var express = require("express"); // requiring this means we save the entire exp
 var app = express(); // we run the entire express library as a function.
 const PORT = process.env.PORT || 3000;
 app.use(function(req, res, next){
-    if (req.headers['x-forwarded-proto'] === 'http'){
-        next();
-    } else{
+    if (req.headers['x-forwarded-proto'] === 'https'){
         res.redirect("http://" + req.hostname + req.url);
+
+    } else{
+        next();
     }
 });
 app.use(express.static('public')); // this defines the directory it will use to show the files
