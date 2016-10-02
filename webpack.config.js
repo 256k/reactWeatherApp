@@ -1,5 +1,20 @@
+var webpack = require('webpack');
+
 module.exports = { // the config file returns an object with multiple items and properties:
-    entry: "./app/app.jsx", // (input) this is where our writetn file wil be fetched
+    entry: [
+        'script!jquery/dist/jquery.min.js',
+        'script!foundation-sites/dist/foundation.min.js',
+        './app/app.jsx'
+    ],// (input) this is where our writetn file wil be fetched
+     externals: {
+        jquery: 'jQuery'
+     },
+     plugins: [
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery'
+        })
+     ],
     output: { // output takes an object with path: which is the directory name, we can use __dirname to get our dir
         path: __dirname,
         filename: "./public/bundle.js" // we write our outputted file's path and name we want it to take.
