@@ -4,8 +4,12 @@ var Main = (props) => {
         return(
             <div>
             <Nav/>
-            <h2>Main Component</h2>
-            {props.children}
+            <div className="row">
+                <div className="small-centered medium-4 columns">
+                    {props.children}
+                </div>
+            </div>
+
                 {/* // this places the children of main that we defined in app.jsx */}
 
 
